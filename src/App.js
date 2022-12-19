@@ -30,7 +30,10 @@ function App() {
   // const loggedIn = useSelector((state) => state.global.loggedIn);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
-  let storedUser = JSON.parse(localStorage.getItem("user"));
+  let storedUser = null;
+  if (localStorage.getItem("user") !== "undefined") {
+    storedUser = JSON.parse(localStorage.getItem("user"));
+  } else storedUser = null;
 
   useEffect(() => {
     client.fetch(userQuery(storedUser?.googleId)).then((data) => {
