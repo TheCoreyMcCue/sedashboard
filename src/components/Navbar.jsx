@@ -27,7 +27,7 @@ import {
 import { setLoggedIn } from "state";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
-  console.log("🚀 ~ file: Navbar.jsx:30 ~ Navbar ~ user", user[0]);
+  console.log("🚀 ~ file: Navbar.jsx:30 ~ Navbar ~ user", user);
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -90,7 +90,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               <Box
                 component="img"
                 alt="profile"
-                src={user[0]?.image}
+                src={user?.image}
                 height="32px"
                 width="32px"
                 borderRadius="50%"
@@ -102,7 +102,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                   fontSize="0.85rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  {`${user[0]?.firstName} ${user[0]?.lastName}`}
+                  {`${user?.firstName} ${user?.lastName}`}
                 </Typography>
               </Box>
               <ArrowDropDownOutlined

@@ -25,34 +25,28 @@ import { setLoggedUser } from "state";
 function App() {
   const dispatch = useDispatch();
   const mode = useSelector((state) => state.global.mode);
-  // const user = useSelector((state) => state.global.loggedUser);
-  const [user, setUser] = useState(null);
+
   const loggedIn = useSelector((state) => state.global.loggedIn);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
-  // if (localStorage.getItem("user") !== "undefined") {
-  //   user = JSON.parse(localStorage.getItem("user"));
-  // } else user = null;
-
   let storedUser = JSON.parse(localStorage.getItem("user"));
-  // console.log("🚀 ~ file: App.js:36 ~ App ~ storedUser", storedUser);
 
   useEffect(() => {
     client.fetch(userQuery(storedUser.googleId)).then((data) => {
-      setUser(data);
+      dispatch(setLoggedUser(data));
     });
   }, []);
 
-  dispatch(setLoggedUser(user));
+  const user = useSelector((state) => state.global.loggedUser[0]);
+  console.log("🚀 ~ file: App.js:47 ~ App ~ user", user);
 
-  console.log("🚀 ~ file: App.js:25 ~ App ~ user", user);
   return (
     <div className="app">
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            {user && loggedIn ? (
+            {user ? (
               <Route element={<Layout user={user} />}>
                 <Route
                   path="/"
