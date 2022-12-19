@@ -12,13 +12,11 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Header from "components/Header";
-import { useGetProductsQuery } from "state/api";
 import { client } from "../../client";
 
 import { productQuery } from "utils/data";
-import { Link } from "react-router-dom";
 
-const Product = ({ _id, title, documentation, description }) => {
+const Product = ({ title, documentation, description }) => {
   const theme = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
   // const [user, setUser] = useState();
@@ -95,7 +93,7 @@ const Product = ({ _id, title, documentation, description }) => {
   );
 };
 
-const Products = ({ user }) => {
+const Products = () => {
   const [products, setProducts] = useState([]);
   // console.log("🚀 ~ file: index.jsx:100 ~ Products ~ products", products);
   const isNonMobile = useMediaQuery("(min-width: 1000px)");

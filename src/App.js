@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
@@ -24,7 +24,8 @@ import { setLoggedUser } from "state";
 
 function App() {
   const dispatch = useDispatch();
-  const mode = useSelector((state) => state.global.mode);
+  const mode = useSelector((state) => state.global.mode); // eslint-disable-line no-use-before-define
+  const [user, setUser] = useState(null);
 
   // const loggedIn = useSelector((state) => state.global.loggedIn);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
@@ -34,10 +35,10 @@ function App() {
   useEffect(() => {
     client.fetch(userQuery(storedUser.googleId)).then((data) => {
       dispatch(setLoggedUser(data));
+      setUser(data[0]);
     });
   }, [dispatch, storedUser?.googleId]);
 
-  const user = useSelector((state) => state.global.loggedUser[0]);
   console.log("🚀 ~ file: App.js:47 ~ App ~ user", user);
 
   return (

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/*eslint-disable */
 let user;
 if (localStorage.getItem("user") !== "undefined") {
   user = JSON.parse(localStorage.getItem("user"));
@@ -31,3 +32,4 @@ export const globalSlice = createSlice({
 export const { setMode, setLoggedIn, setLoggedUser } = globalSlice.actions;
 
 export default globalSlice.reducer;
+/*eslint-disable */
