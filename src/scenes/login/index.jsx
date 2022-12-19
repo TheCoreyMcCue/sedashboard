@@ -21,10 +21,10 @@ const Login = () => {
     });
   });
   const responseGoogle = (response) => {
-    localStorage.setItem("user", JSON.stringify(response.profileObj));
+    localStorage.setItem("user", JSON.stringify(response?.profileObj));
     const { email, name, googleId, imageUrl, familyName, givenName } =
       response?.profileObj;
-    response.accessToken &&
+    response?.accessToken &&
       dispatch(setLoggedIn()) &&
       dispatch(setLoggedUser(response?.profileObj));
     const doc = {

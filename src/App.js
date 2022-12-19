@@ -33,7 +33,7 @@ function App() {
   let storedUser = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    client.fetch(userQuery(storedUser.googleId)).then((data) => {
+    client.fetch(userQuery(storedUser?.googleId)).then((data) => {
       dispatch(setLoggedUser(data));
       setUser(data[0]);
     });
