@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
@@ -26,7 +26,7 @@ function App() {
   const dispatch = useDispatch();
   const mode = useSelector((state) => state.global.mode);
 
-  const loggedIn = useSelector((state) => state.global.loggedIn);
+  // const loggedIn = useSelector((state) => state.global.loggedIn);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
   let storedUser = JSON.parse(localStorage.getItem("user"));
@@ -35,7 +35,7 @@ function App() {
     client.fetch(userQuery(storedUser.googleId)).then((data) => {
       dispatch(setLoggedUser(data));
     });
-  }, []);
+  }, [dispatch, storedUser?.googleId]);
 
   const user = useSelector((state) => state.global.loggedUser[0]);
   console.log("🚀 ~ file: App.js:47 ~ App ~ user", user);

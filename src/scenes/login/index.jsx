@@ -1,12 +1,11 @@
 import React from "react";
 
 import GoogleLogin from "react-google-login";
-import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
 import logo from "../../assets/Ekata-Mastercard-Reverse.svg";
 import shareVideo from "../../assets/login_vid.mp4";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { setLoggedIn, setLoggedUser } from "state";
 import { client } from "../../client";
@@ -56,7 +55,7 @@ const Login = () => {
 
         <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0    bg-blackOverlay">
           <div className="p-1">
-            <img src={logo} width="130px" />
+            <img src={logo} alt="" width="130px" />
           </div>
           <div className="p-5 text-xl">
             <h1>Sales Engineer Dashboard</h1>
