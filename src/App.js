@@ -52,10 +52,7 @@ function App() {
           <Routes>
             {user ? (
               <Route element={<Layout user={user} />}>
-                <Route
-                  path="/"
-                  element={<Navigate to="/dashboard" replace />}
-                />
+                <Route path="/" element={<Navigate to="/" replace />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/products" element={<Products user={user} />} />
                 <Route path="/customers" element={<Customers user={user} />} />
