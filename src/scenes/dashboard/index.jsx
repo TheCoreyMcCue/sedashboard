@@ -8,22 +8,7 @@ import Header from "components/Header";
 //   PersonAdd,
 //   Traffic,
 // } from "@mui/icons-material";
-import {
-  Box,
-  // Button,
-  // Typography,
-  useTheme,
-  useMediaQuery,
-  // Card,
-  // CardActionArea,
-  // CardMedia,
-  // CardContent,
-  // CardActions,
-} from "@mui/material";
-// import { DataGrid } from "@mui/x-data-grid";
-// import BreakdownChart from "components/BreakdownChart";
-// import OverviewChart from "components/OverviewChart";
-// import StatBox from "components/StatBox";
+import { Box, useTheme, useMediaQuery } from "@mui/material";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -54,7 +39,7 @@ const Dashboard = () => {
         mt="20px"
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="160px"
+        gridAutoRows="100px"
         gap="20px"
         sx={{
           "& > div": {
@@ -69,9 +54,16 @@ const Dashboard = () => {
           backgroundColor={theme.palette.background.alt}
           p="1rem"
           borderRadius="0.55rem"
-          style={{ cursor: "pointer" }}
+          component="a"
+          target="_blank"
+          href="https://ekata.atlassian.net/jira/software/c/projects/SA/issues/?filter=myopenissues"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          box 2
+          My open Tickets
         </Box>
         <Box
           gridColumn="span 4"
@@ -79,10 +71,16 @@ const Dashboard = () => {
           backgroundColor={theme.palette.background.alt}
           p="1rem"
           borderRadius="0.55rem"
-          style={{ cursor: "pointer" }}
+          component="a"
+          target="_blank"
+          href="https://ekata.cloud.databricks.com/?o=3894293756420120#"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          box 2 <br />
-          boxxxxxx
+          DataBricks
         </Box>
         <Box
           gridColumn="span 4"
@@ -90,12 +88,121 @@ const Dashboard = () => {
           backgroundColor={theme.palette.background.alt}
           p="1rem"
           borderRadius="0.55rem"
-          style={{ cursor: "pointer" }}
+          component="a"
+          target="_blank"
+          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          box 2
+          Jira
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          component="a"
+          target="_blank"
+          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Jira
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          component="a"
+          target="_blank"
+          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Jira
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          component="a"
+          target="_blank"
+          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Jira
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          component="a"
+          target="_blank"
+          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Jira
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          component="a"
+          target="_blank"
+          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Jira
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          component="a"
+          target="_blank"
+          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Jira
         </Box>
       </Box>
-      <Box
+      {/* <Box
         mt="20px"
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
@@ -115,9 +222,29 @@ const Dashboard = () => {
           backgroundColor={theme.palette.background.alt}
           p="1rem"
           borderRadius="0.55rem"
-          style={{ cursor: "pointer" }}
+          style={{
+            cursor: "pointer",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          box 2
+          Quick Link
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          style={{
+            cursor: "pointer",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Quick Link
         </Box>
         <Box
           gridColumn="span 4"
@@ -129,17 +256,7 @@ const Dashboard = () => {
         >
           box 2
         </Box>
-        <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-          style={{ cursor: "pointer" }}
-        >
-          box 2
-        </Box>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
