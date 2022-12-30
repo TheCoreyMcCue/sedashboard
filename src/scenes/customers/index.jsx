@@ -1,29 +1,18 @@
-// import React, { useEffect, useState } from "react";
-// import { Box, useTheme } from "@mui/material";
-// import { useGetCustomersQuery } from "state/api";
-// import Header from "components/Header";
-// import { DataGrid } from "@mui/x-data-grid";
-// import { customerQuery } from "utils/data";
-// import { client } from "../../client";
-
-// const Customers = () => {
-//   const theme = useTheme();
-//   const [customers, setCustomers] = useState([]);
-//   const { data, isLoading } = useGetCustomersQuery();
-
-//   useEffect(() => {
-//     client.fetch(customerQuery()).then((data) => {
-//       setCustomers(data);
-//     });
-//   }, []);
-
 import * as React from "react";
 import Button from "@mui/material/Button";
 import { DataGrid } from "@mui/x-data-grid";
-import { useDemoData } from "@mui/x-data-grid-generator";
+import NestedModal from "components/Modal";
+// import { useDemoData } from "@mui/x-data-grid-generator";
 
 export default function CheckboxSelectionGrid() {
-  const [checkboxSelection, setCheckboxSelection] = React.useState(true);
+  // const [checkboxSelection] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const dayta = {
     columns: [
@@ -55,7 +44,14 @@ export default function CheckboxSelectionGrid() {
       {
         field: "technicalQual",
         headerName: "Technical Qualification",
+        type: "boolean",
         flex: 1,
+      },
+      {
+        field: "queries",
+        headerName: "Queries p/m",
+        type: "number",
+        width: 90,
       },
     ],
 
@@ -64,97 +60,123 @@ export default function CheckboxSelectionGrid() {
         id: 1,
         company: "Riskify",
         contactName: "John Snow",
-        age: 35,
+        contactEmail: "testemail@testcompany.gov",
+        technicalQual: true,
+        queries: 3600,
       },
       {
         id: 2,
-        company: "Riskify",
-        lastName: "Lannister",
-        firstName: "Cersei",
-        age: 42,
+        company: "Quatar Airways",
+        contactName: "Cersei",
+        contactEmail: "testemail@testcompany.gov",
+        technicalQual: true,
+        queries: 3600,
       },
       {
         id: 3,
-        company: "Riskify",
-        lastName: "Lannister",
-        firstName: "Jaime",
-        age: 45,
+        company: "Rebike",
+        contactName: "Jaime",
+        contactEmail: "testemail@testcompany.gov",
+        technicalQual: false,
+        queries: 3600,
       },
       {
         id: 4,
-        company: "Riskify",
-        lastName: "Stark",
-        firstName: "Arya",
-        age: 16,
+        company: "Gucci",
+        contactName: "Arya",
+        contactEmail: "testemail@testcompany.gov",
+        technicalQual: false,
+        queries: 54600,
       },
       {
         id: 5,
-        company: "Riskify",
-        lastName: "Targaryen",
-        firstName: "Daenerys",
-        age: null,
+        company: "Sun Finance",
+        contactName: "Daenerys",
+        contactEmail: "testemail@testcompany.gov",
+        technicalQual: true,
+        queries: 2400,
       },
       {
         id: 6,
         company: "Riskify",
-        lastName: "Melisandre",
-        firstName: null,
-        age: 150,
+        contactName: "Jerry",
+        contactEmail: "testemail@testcompany.gov",
+        queries: 36000,
+        technicalQual: false,
       },
       {
         id: 7,
         company: "Riskify",
-        lastName: "Clifford",
-        firstName: "Ferrara",
-        age: 44,
+        contactName: "Ferrara",
+        contactEmail: "testemail@testcompany.gov",
+        technicalQual: false,
+        queries: 3800,
       },
       {
         id: 8,
         company: "Riskify",
-        lastName: "Frances",
-        firstName: "Rossini",
-        age: 36,
+        contactName: "Rossini",
+        contactEmail: "testemail@testcompany.gov",
+        technicalQual: true,
+        queries: 96000,
       },
       {
         id: 9,
         company: "Riskify",
-        lastName: "Roxie",
-        firstName: "Harvey",
-        age: 65,
+        contactName: "Harvey",
+        contactEmail: "testemail@testcompany.gov",
+        technicalQual: false,
+        queries: 40000,
       },
     ],
-
-    // initialState: {
-    //   columns: {
-    //     columnVisibilityModel: {
-    //       id: false,
-    //     },
-    //   },
-    // },
   };
 
-  const { data } = useDemoData({
-    dataSet: "Commodity",
-    rowLength: 10,
-    maxColumns: 5,
-  });
-  console.log(
-    "🚀 ~ file: index.jsx:160 ~ CheckboxSelectionGrid ~ data",
-    data,
-    "dayta",
-    dayta
-  );
+  // const { data } = useDemoData({
+  //   dataSet: "Commodity",
+  //   rowLength: 10,
+  //   maxColumns: 5,
+  // });
 
   return (
-    <div style={{ width: "100%" }}>
-      <Button
-        sx={{ mb: 2 }}
-        onClick={() => setCheckboxSelection(!checkboxSelection)}
+    <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        Toggle checkbox selection
-      </Button>
-      <div style={{ height: "80vh" }}>
-        <DataGrid checkboxSelection={checkboxSelection} {...dayta} />
+        <Button
+          variant="contained"
+          sx={{ marginTop: "5rem" }}
+          onClick={() => setOpen(!open)}
+        >
+          Add
+        </Button>
+      </div>
+      <NestedModal
+        handleOpen={handleOpen}
+        open={open}
+        handleClose={handleClose}
+      />
+      <div
+        style={{
+          height: "70vh",
+          width: "95%",
+          marginTop: "5vh",
+          marginLeft: "5vh",
+        }}
+      >
+        <DataGrid
+          {...dayta}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+          // checkboxSelection={checkboxSelection}
+          onChange={(event) => console.log(event.target.checked)}
+          onRowClick={(ids) => {
+            console.log(ids);
+          }}
+        />
       </div>
     </div>
   );
