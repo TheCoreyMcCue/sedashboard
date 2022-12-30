@@ -22,12 +22,14 @@ import {
   MenuItem,
   useTheme,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 // import { setLoggedIn } from "state";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
@@ -39,6 +41,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const onLogOut = () => {
     dispatch(setLoggedUser("undefined"));
     localStorage.clear();
+    navigate("/");
   };
   return (
     <AppBar
