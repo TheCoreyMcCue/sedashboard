@@ -9,7 +9,7 @@ import {
 } from "@mui/icons-material";
 import FlexBetween from "components/FlexBetween";
 import { useDispatch } from "react-redux";
-import { setMode } from "state";
+import { setLoggedUser, setMode } from "state";
 import {
   AppBar,
   Button,
@@ -23,10 +23,9 @@ import {
   useTheme,
 } from "@mui/material";
 
-import { setLoggedIn } from "state";
+// import { setLoggedIn } from "state";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
-  console.log("🚀 ~ file: Navbar.jsx:30 ~ Navbar ~ user", user);
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -35,6 +34,12 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
+  // const loggedUser = useSelector((state) => state.global.loggedUser); // eslint-disable-line no-use-before-define
+
+  const onLogOut = () => {
+    dispatch(setLoggedUser("undefined"));
+    localStorage.clear();
+  };
   return (
     <AppBar
       sx={{
@@ -114,9 +119,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               onClose={handleClose}
               anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
-              <MenuItem onClick={() => dispatch(setLoggedIn())}>
-                Log Out
-              </MenuItem>
+              <MenuItem onClick={() => onLogOut()}>Log Out</MenuItem>
             </Menu>
           </FlexBetween>
         </FlexBetween>

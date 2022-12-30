@@ -95,7 +95,6 @@ const Product = ({ title, documentation, description }) => {
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  // console.log("🚀 ~ file: index.jsx:100 ~ Products ~ products", products);
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
 
   useEffect(() => {

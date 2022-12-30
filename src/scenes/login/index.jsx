@@ -24,9 +24,7 @@ const Login = () => {
     localStorage.setItem("user", JSON.stringify(response?.profileObj));
     const { email, name, googleId, imageUrl, familyName, givenName } =
       response?.profileObj;
-    response?.accessToken &&
-      dispatch(setLoggedIn()) &&
-      dispatch(setLoggedUser(response?.profileObj));
+    dispatch(setLoggedIn()) && dispatch(setLoggedUser(response?.profileObj));
     const doc = {
       _id: googleId,
       _type: "user",

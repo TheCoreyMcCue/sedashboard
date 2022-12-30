@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 let user;
 if (localStorage.getItem("user") !== "undefined") {
   user = JSON.parse(localStorage.getItem("user"));
-} else user = null;
+} else user = "undefined";
 
 const initialState = {
   mode: "dark",

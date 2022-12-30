@@ -25,24 +25,23 @@ import { setLoggedUser } from "state";
 function App() {
   const dispatch = useDispatch();
   const mode = useSelector((state) => state.global.mode); // eslint-disable-line no-use-before-define
+  const loggedUser = useSelector((state) => state.global.loggedUser); // eslint-disable-line no-use-before-define
   const [user, setUser] = useState(null);
 
   // const loggedIn = useSelector((state) => state.global.loggedIn);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
-  let storedUser = null;
+  let storedUser = undefined;
   if (localStorage.getItem("user") !== "undefined") {
     storedUser = JSON.parse(localStorage.getItem("user"));
-  } else storedUser = null;
+  } else localStorage.clear();
 
   useEffect(() => {
     client.fetch(userQuery(storedUser?.googleId)).then((data) => {
-      dispatch(setLoggedUser(data));
+      dispatch(setLoggedUser(data[0]));
       setUser(data[0]);
     });
   }, [dispatch, storedUser?.googleId]);
-
-  console.log("🚀 ~ file: App.js:47 ~ App ~ user", user);
 
   return (
     <div className="app">
@@ -50,7 +49,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            {user ? (
+            {loggedUser || storedUser ? (
               <Route element={<Layout user={user} />}>
                 <Route path="/" element={<Navigate to="/" replace />} />
                 <Route path="/dashboard" element={<Dashboard />} />

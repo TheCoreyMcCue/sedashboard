@@ -6,7 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { customerQuery } from "utils/data";
 import { client } from "../../client";
 
-const Customers = ({ user }) => {
+const Customers = () => {
   const theme = useTheme();
   const [customers, setCustomers] = useState([]);
   const { data, isLoading } = useGetCustomersQuery();
@@ -17,7 +17,6 @@ const Customers = ({ user }) => {
     });
   }, []);
 
-  console.log("🚀 ~ file: index.jsx:10 ~ customers ~ customers", customers);
   const columns = [
     {
       field: "company",
