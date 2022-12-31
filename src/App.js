@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     client.fetch(userQuery(storedUser?.googleId)).then((data) => {
       dispatch(setLoggedUser(data[0]));
-      setUser(data[0]);
+      setUser(data[0]).then(window.location.reload());
     });
   }, [dispatch, storedUser?.googleId]);
 
