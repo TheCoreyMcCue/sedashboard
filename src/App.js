@@ -43,7 +43,7 @@ function App() {
     });
   }, [dispatch, setUser, storedUser?.googleId]);
 
-  loggedUser == "undefined" && window.location.reload();
+  loggedUser === "undefined" && window.location.reload();
 
   return (
     <div className="app">
