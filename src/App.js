@@ -39,9 +39,11 @@ function App() {
   useEffect(() => {
     client.fetch(userQuery(storedUser?.googleId)).then((data) => {
       dispatch(setLoggedUser(data[0]));
-      setUser(data[0]).then(window.location.reload());
+      setUser(data[0]).then(() => window.location.reload());
     });
-  }, [dispatch, storedUser?.googleId]);
+  }, [dispatch, setUser, storedUser?.googleId]);
+
+  loggedUser == "undefined" && window.location.reload();
 
   return (
     <div className="app">
@@ -49,7 +51,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            {loggedUser || storedUser ? (
+            {loggedUser ? (
               <Route element={<Layout user={user} />}>
                 <Route path="/" element={<Navigate to="/" replace />} />
                 <Route path="/dashboard" element={<Dashboard />} />

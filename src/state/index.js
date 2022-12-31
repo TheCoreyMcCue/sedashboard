@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 /*eslint-disable */
-let user;
-if (localStorage.getItem("user") !== "undefined") {
-  user = JSON.parse(localStorage.getItem("user"));
-} else user = "undefined";
+// let user;
+// if (localStorage.getItem("user") !== "undefined") {
+//   user = JSON.parse(localStorage.getItem("user"));
+// } else user = "undefined";
 
 const initialState = {
   mode: "dark",
   userId: "63701cc1f03239b7f700000e",
   loggedIn: false,
-  loggedUser: user,
+  loggedUser: undefined,
 };
 
 export const globalSlice = createSlice({
