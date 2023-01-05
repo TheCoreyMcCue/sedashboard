@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { CircularProgress, CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,57 +30,62 @@ function App() {
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
   let storedUser = undefined;
-  if (localStorage.getItem("user") !== "undefined") {
+  if (localStorage.getItem("user")) {
     storedUser = JSON.parse(localStorage.getItem("user"));
-  } else localStorage.clear();
+  } else storedUser = undefined && localStorage.clear();
 
+  console.log("🚀 ~ file: App.js:33 ~ App ~ storedUser", storedUser);
   useEffect(() => {
     client.fetch(userQuery(storedUser?.googleId)).then((data) => {
       dispatch(setLoggedUser(data[0]));
     });
   }, [storedUser?.googleId, dispatch]);
 
-  loggedUser === "undefined" && window.location.reload();
+  // loggedUser === "undefined" && window.location.reload();
 
   return (
     <div className="app">
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Routes>
-            {loggedUser ? (
-              <Route element={<Layout user={loggedUser} />}>
-                <Route path="/" element={<Navigate to="/" replace />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route
-                  path="/products"
-                  element={<Products user={loggedUser} />}
-                />
-                <Route
-                  path="/customers"
-                  element={<Customers user={loggedUser} />}
-                />
-                <Route path="/transactions" element={<Transactions />} />
-                <Route path="/geography" element={<Geography />} />
-                <Route path="/overview" element={<Overview />} />
-                <Route path="/daily" element={<Daily />} />
-                <Route path="/monthly" element={<Monthly />} />
-                <Route path="/breakdown" element={<Breakdown />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/performance" element={<Performance />} />
-              </Route>
-            ) : (
-              <Route>
-                <Route
-                  path="/"
-                  element={<Navigate to="/dashboard" replace />}
-                />
-                <Route path="/dashboard" element={<Login />} />
-              </Route>
-            )}
-          </Routes>
-        </ThemeProvider>
-      </BrowserRouter>
+      {storedUser && !setLoggedUser ? (
+        <CircularProgress />
+      ) : (
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Routes>
+              {loggedUser ? (
+                <Route element={<Layout user={loggedUser} />}>
+                  <Route path="/" element={<Navigate to="/" replace />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route
+                    path="/products"
+                    element={<Products user={loggedUser} />}
+                  />
+                  <Route
+                    path="/customers"
+                    element={<Customers user={loggedUser} />}
+                  />
+                  <Route path="/transactions" element={<Transactions />} />
+                  <Route path="/geography" element={<Geography />} />
+                  <Route path="/overview" element={<Overview />} />
+                  <Route path="/daily" element={<Daily />} />
+                  <Route path="/monthly" element={<Monthly />} />
+                  <Route path="/breakdown" element={<Breakdown />} />
+                  <Route path="/admin" element={<Admin />} />
+                  <Route path="/performance" element={<Performance />} />
+                </Route>
+              ) : (
+                <Route>
+                  <Route
+                    path="/"
+                    element={<Navigate to="/dashboard" replace />}
+                  />
+                  <Route path="/dashboard" element={<Login />} />
+                </Route>
+              )}
+            </Routes>
+          </ThemeProvider>
+        </BrowserRouter>
+      )}
     </div>
   );
 }
