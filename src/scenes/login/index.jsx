@@ -7,7 +7,7 @@ import logo from "../../assets/Ekata-Mastercard-Reverse.svg";
 import shareVideo from "../../assets/login_vid.mp4";
 import { useDispatch } from "react-redux";
 
-import { setLoggedIn, setLoggedUser } from "state";
+import { setLoggedIn } from "state";
 import { client } from "../../client";
 import { gapi } from "gapi-script";
 
@@ -24,7 +24,7 @@ const Login = () => {
     localStorage.setItem("user", JSON.stringify(response?.profileObj));
     const { email, name, googleId, imageUrl, familyName, givenName } =
       response?.profileObj;
-    dispatch(setLoggedIn()) && dispatch(setLoggedUser(response?.profileObj));
+    dispatch(setLoggedIn());
     const doc = {
       _id: googleId,
       _type: "user",
@@ -36,6 +36,7 @@ const Login = () => {
       lastName: familyName,
     };
     client.createIfNotExists(doc);
+    window.location.reload();
   };
 
   return (

@@ -28,12 +28,12 @@ export default function CheckboxSelectionGrid() {
       },
       {
         field: "contactEmail",
-        headerName: "Contact Email",
+        headerName: "Email",
         flex: 1,
       },
       {
-        field: "about",
-        headerName: "About",
+        field: "api",
+        headerName: "API",
         flex: 0.4,
       },
       {
@@ -61,6 +61,7 @@ export default function CheckboxSelectionGrid() {
         company: "Riskify",
         contactName: "John Snow",
         contactEmail: "testemail@testcompany.gov",
+        api: "TRapi",
         technicalQual: true,
         queries: 3600,
       },
@@ -69,6 +70,7 @@ export default function CheckboxSelectionGrid() {
         company: "Quatar Airways",
         contactName: "Cersei",
         contactEmail: "testemail@testcompany.gov",
+        api: "AO",
         technicalQual: true,
         queries: 3600,
       },
@@ -77,6 +79,7 @@ export default function CheckboxSelectionGrid() {
         company: "Rebike",
         contactName: "Jaime",
         contactEmail: "testemail@testcompany.gov",
+        api: "AOE",
         technicalQual: false,
         queries: 3600,
       },
@@ -86,6 +89,7 @@ export default function CheckboxSelectionGrid() {
         contactName: "Arya",
         contactEmail: "testemail@testcompany.gov",
         technicalQual: false,
+        api: "TRapi",
         queries: 54600,
       },
       {
@@ -94,6 +98,7 @@ export default function CheckboxSelectionGrid() {
         contactName: "Daenerys",
         contactEmail: "testemail@testcompany.gov",
         technicalQual: true,
+        api: "IDC",
         queries: 2400,
       },
       {
@@ -101,6 +106,7 @@ export default function CheckboxSelectionGrid() {
         company: "Riskify",
         contactName: "Jerry",
         contactEmail: "testemail@testcompany.gov",
+        api: "TRapi",
         queries: 36000,
         technicalQual: false,
       },
@@ -110,6 +116,7 @@ export default function CheckboxSelectionGrid() {
         contactName: "Ferrara",
         contactEmail: "testemail@testcompany.gov",
         technicalQual: false,
+        api: "TBD",
         queries: 3800,
       },
       {
@@ -118,6 +125,7 @@ export default function CheckboxSelectionGrid() {
         contactName: "Rossini",
         contactEmail: "testemail@testcompany.gov",
         technicalQual: true,
+        api: "IDC",
         queries: 96000,
       },
       {
@@ -126,6 +134,7 @@ export default function CheckboxSelectionGrid() {
         contactName: "Harvey",
         contactEmail: "testemail@testcompany.gov",
         technicalQual: false,
+        api: "IDC",
         queries: 40000,
       },
     ],

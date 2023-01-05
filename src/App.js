@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
@@ -26,9 +26,7 @@ function App() {
   const dispatch = useDispatch();
   const mode = useSelector((state) => state.global.mode); // eslint-disable-line no-use-before-define
   const loggedUser = useSelector((state) => state.global.loggedUser); // eslint-disable-line no-use-before-define
-  const [user, setUser] = useState(null);
 
-  // const loggedIn = useSelector((state) => state.global.loggedIn);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
   let storedUser = undefined;
@@ -39,9 +37,8 @@ function App() {
   useEffect(() => {
     client.fetch(userQuery(storedUser?.googleId)).then((data) => {
       dispatch(setLoggedUser(data[0]));
-      setUser(data[0]).then(() => window.location.reload());
     });
-  }, [dispatch, setUser, storedUser?.googleId]);
+  }, [storedUser?.googleId, dispatch]);
 
   loggedUser === "undefined" && window.location.reload();
 
@@ -52,11 +49,17 @@ function App() {
           <CssBaseline />
           <Routes>
             {loggedUser ? (
-              <Route element={<Layout user={user} />}>
+              <Route element={<Layout user={loggedUser} />}>
                 <Route path="/" element={<Navigate to="/" replace />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/products" element={<Products user={user} />} />
-                <Route path="/customers" element={<Customers user={user} />} />
+                <Route
+                  path="/products"
+                  element={<Products user={loggedUser} />}
+                />
+                <Route
+                  path="/customers"
+                  element={<Customers user={loggedUser} />}
+                />
                 <Route path="/transactions" element={<Transactions />} />
                 <Route path="/geography" element={<Geography />} />
                 <Route path="/overview" element={<Overview />} />

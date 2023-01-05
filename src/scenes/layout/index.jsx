@@ -6,7 +6,6 @@ import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
 
 const Layout = ({ user }) => {
-  // const user = useSelector((state) => state.global.loggedUser);
   const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 

@@ -24,8 +24,6 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-// import { setLoggedIn } from "state";
-
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -35,8 +33,6 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
-
-  // const loggedUser = useSelector((state) => state.global.loggedUser); // eslint-disable-line no-use-before-define
 
   const onLogOut = () => {
     dispatch(setLoggedUser("undefined"));
