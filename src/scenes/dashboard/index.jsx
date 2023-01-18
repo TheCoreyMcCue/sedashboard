@@ -63,7 +63,7 @@ const Dashboard = () => {
             alignItems: "center",
           }}
         >
-          My open Tickets
+          My Open Jira Tickets
         </Box>
         <Box
           gridColumn="span 4"
@@ -90,14 +90,14 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          href="https://docs.google.com/document/d/1uO6hV-pI13LbGisGtxpn9l4jq_wC9-ekjB4bM0kS_a8/"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          Jira
+          Technical Qual Questions
         </Box>
         <Box
           gridColumn="span 4"
@@ -107,14 +107,14 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          href="https://docs.google.com/document/d/1HJ_aAOo4BN_S-F7XIqlF5uKod0sCjM-YSnnLo4Ga0Og/"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          Jira
+          FDS Handbook
         </Box>
         <Box
           gridColumn="span 4"
@@ -124,14 +124,14 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          href="https://app.getguru.com/dashboard"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          Jira
+          Guru Cards
         </Box>
         <Box
           gridColumn="span 4"
@@ -141,14 +141,14 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          href="https://docs.google.com/document/u/0/?tgif=d"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          Jira
+          My Google Docs
         </Box>
         <Box
           gridColumn="span 4"
