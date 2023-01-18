@@ -97,7 +97,7 @@ const Dashboard = () => {
             alignItems: "center",
           }}
         >
-          Technical Qual Questions
+          Technical Qualification Questions
         </Box>
         <Box
           gridColumn="span 4"
@@ -158,14 +158,14 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          href="https://docs.google.com/document/d/1Yb172orEGLV4XeC-L9fdf1V6l0AfZ7D4u20QCT4_S2k/edit#heading=h.fq95awko1elp"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          Jira
+          JTP Template
         </Box>
         <Box
           gridColumn="span 4"
@@ -175,14 +175,14 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          href="https://docs.google.com/document/d/1fEHXFHnkrrTY4mQlLAxVPa82tIPSvHEpdSX2nVVaNII/"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          Jira
+          SFTP Instructions (for customers)
         </Box>
         <Box
           gridColumn="span 4"
@@ -192,14 +192,14 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://ekata.okta.com/home/atlassian/0oab9jr9ogkAamAJN357/aln1aqcs055ZRoizW0g8"
+          href="https://mastercard.sharepoint.com.mcas.ms/"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          Jira
+          The Hub (MasterCard)
         </Box>
       </Box>
       {/* <Box
