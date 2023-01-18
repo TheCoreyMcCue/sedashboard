@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CircularProgress, CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
