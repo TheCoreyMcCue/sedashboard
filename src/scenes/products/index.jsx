@@ -7,7 +7,7 @@ import {
   Collapse,
   Button,
   Typography,
-  // Rating,
+  Rating,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
@@ -16,7 +16,7 @@ import { client } from "../../client";
 
 import { productQuery } from "utils/data";
 
-const Product = ({ title, documentation, description }) => {
+const Product = ({ title, documentation, description, guru }) => {
   const theme = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
   // const [user, setUser] = useState();
@@ -46,49 +46,35 @@ const Product = ({ title, documentation, description }) => {
       }}
     >
       <CardContent>
-        <Typography
+        {/* <Typography
           sx={{ fontSize: 14 }}
-          color={theme.palette.secondary[700]}
+          // color={theme.palette.secondary[700]}
           gutterBottom
         >
-          {documentation}
-        </Typography>
+          documentation
+        </Typography> */}
         <Typography variant="h5" component="div">
           {title}
         </Typography>
-        {/* <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
-          ${Number(price).toFixed(2)}
-        </Typography> */}
-        {/* <Rating value={rating} readOnly /> */}
-
-        <Button target="_blank" href={documentation}>
-          <Typography variant="body2">documentation</Typography>
-        </Button>
       </CardContent>
-      <CardActions>
-        <Button variant="primary" size="small" onClick={() => onButtonClick()}>
-          See More
-        </Button>
-      </CardActions>
-      <Collapse
-        in={isExpanded}
-        timeout="auto"
-        unmountOnExit
-        sx={{
-          color: theme.palette.neutral[300],
+      <CardActions
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "start",
         }}
       >
-        <CardContent>
-          <Typography>{description}</Typography>
-          {/* <Typography>Supply Left: {supply}</Typography>
-          <Typography>
-            Yearly Sales This Year: {stat.yearlySalesTotal}
+        <Button target="_blank" href={documentation}>
+          <Typography color="grey" variant="body2">
+            documentation
           </Typography>
-          <Typography>
-            Yearly Units Sold This Year: {stat.yearlyTotalSoldUnits}
-          </Typography> */}
-        </CardContent>
-      </Collapse>
+        </Button>
+        <Button target="_blank" href={guru}>
+          <Typography color="white" variant="body2">
+            Guru Cards
+          </Typography>
+        </Button>
+      </CardActions>
     </Card>
   );
 };
@@ -118,13 +104,14 @@ const Products = () => {
             "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
           }}
         >
-          {products?.map(({ _id, title, documentation, description }) => (
+          {products?.map(({ _id, title, documentation, description, guru }) => (
             <Product
               key={_id}
               _id={_id}
               title={title}
               documentation={documentation}
               description={description}
+              guru={guru}
             />
           ))}
         </Box>
