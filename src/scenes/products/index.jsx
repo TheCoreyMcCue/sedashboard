@@ -4,10 +4,10 @@ import {
   Card,
   CardActions,
   CardContent,
-  Collapse,
+  // Collapse,
   Button,
   Typography,
-  Rating,
+  // Rating,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
@@ -21,9 +21,9 @@ const Product = ({ title, documentation, description, guru }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   // const [user, setUser] = useState();
 
-  const onButtonClick = () => {
-    setIsExpanded(!isExpanded);
-  };
+  // const onButtonClick = () => {
+  //   setIsExpanded(!isExpanded);
+  // };
 
   // const User =
   //   localStorage.getItem("user") !== "undefined"
