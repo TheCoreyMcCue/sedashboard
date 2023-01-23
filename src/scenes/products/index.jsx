@@ -18,7 +18,7 @@ import { productQuery } from "utils/data";
 
 const Product = ({ title, documentation, description, guru }) => {
   const theme = useTheme();
-  const [isExpanded, setIsExpanded] = useState(false);
+  // const [isExpanded, setIsExpanded] = useState(false);
   // const [user, setUser] = useState();
 
   // const onButtonClick = () => {
