@@ -76,7 +76,10 @@ const Products = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="EKATA PRODUCTS" subtitle="See your list of products." />
+      <Header
+        title="EKATA PRODUCTS"
+        subtitle="click on a product title for more info"
+      />
       {products && (
         <Grid
           container
