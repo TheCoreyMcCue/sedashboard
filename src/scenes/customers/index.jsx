@@ -1,11 +1,15 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { DataGrid } from "@mui/x-data-grid";
 import NestedModal from "components/Modal";
 // import { useDemoData } from "@mui/x-data-grid-generator";
 
+import { client } from "../../client";
+import { customerQuery } from "utils/data";
+
 export default function CheckboxSelectionGrid() {
   // const [checkboxSelection] = React.useState(true);
+  const [customers, setCustomers] = useState([]);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -14,6 +18,16 @@ export default function CheckboxSelectionGrid() {
     setOpen(false);
   };
 
+  useEffect(() => {
+    client.fetch(customerQuery()).then((data) => {
+      setCustomers(data);
+    });
+  }, []);
+
+  console.log(
+    "🚀 ~ file: index.jsx:28 ~ CheckboxSelectionGrid ~ customers",
+    customers
+  );
   const dayta = {
     columns: [
       {

@@ -7,6 +7,10 @@ export const productQuery = () => {
   const query = `*[_type == "product"]`;
   return query;
 };
+export const fetchProduct = (productId) => {
+  const query = `*[_type == "product" && _id == '${productId}']`;
+  return query;
+};
 
 export const customerQuery = () => {
   const query = `*[_type == "customer"]`;

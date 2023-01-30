@@ -4,38 +4,21 @@ import {
   Card,
   CardActions,
   CardContent,
-  // Collapse,
   Button,
   Typography,
-  // Rating,
   useTheme,
-  useMediaQuery,
+  // useMediaQuery,
+  Grid,
 } from "@mui/material";
 import Header from "components/Header";
 import { client } from "../../client";
 
 import { productQuery } from "utils/data";
+import { useNavigate } from "react-router-dom";
 
-const Product = ({ title, documentation, description, guru }) => {
+const Product = ({ title, documentation, batch, guru, _id }) => {
   const theme = useTheme();
-  // const [isExpanded, setIsExpanded] = useState(false);
-  // const [user, setUser] = useState();
-
-  // const onButtonClick = () => {
-  //   setIsExpanded(!isExpanded);
-  // };
-
-  // const User =
-  //   localStorage.getItem("user") !== "undefined"
-  //     ? JSON.parse(localStorage.getItem("user"))
-  //     : localStorage.clear();
-
-  // useEffect(() => {
-  //   const query = userQuery(User.googleId);
-  //   client.fetch(query).then((data) => {
-  //     setUser(data[0]);
-  //   });
-  // }, []);
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -43,17 +26,12 @@ const Product = ({ title, documentation, description, guru }) => {
         backgroundImage: "none",
         backgroundColor: theme.palette.background.alt,
         borderRadius: "0.55rem",
+        minHeight: "10rem",
       }}
+      onClick={() => navigate(`/products/${_id}`)}
     >
       <CardContent>
-        {/* <Typography
-          sx={{ fontSize: 14 }}
-          // color={theme.palette.secondary[700]}
-          gutterBottom
-        >
-          documentation
-        </Typography> */}
-        <Typography variant="h5" component="div">
+        <Typography variant="h4" component="div" style={{ cursor: "pointer" }}>
           {title}
         </Typography>
       </CardContent>
@@ -65,15 +43,22 @@ const Product = ({ title, documentation, description, guru }) => {
         }}
       >
         <Button target="_blank" href={documentation}>
-          <Typography color="grey" variant="body2">
-            documentation
+          <Typography color="white" variant="heading">
+            Documentation
           </Typography>
-        </Button>
+        </Button>{" "}
         <Button target="_blank" href={guru}>
-          <Typography color="white" variant="body2">
+          <Typography color="grey" variant="body2">
             Guru Cards
           </Typography>
         </Button>
+        {batch && (
+          <Button target="_blank" href={batch}>
+            <Typography color="grey" variant="body2">
+              Batch Instructions
+            </Typography>
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
@@ -81,7 +66,7 @@ const Product = ({ title, documentation, description, guru }) => {
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const isNonMobile = useMediaQuery("(min-width: 1000px)");
+  // const isNonMobile = useMediaQuery("(min-width: 1000px)");
 
   useEffect(() => {
     client.fetch(productQuery()).then((data) => {
@@ -92,31 +77,36 @@ const Products = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <Header title="PRODUCTS" subtitle="See your list of products." />
-      {products ? (
-        <Box
-          mt="20px"
-          display="grid"
-          gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-          justifyContent="space-between"
-          rowGap="20px"
-          columnGap="1.33%"
-          sx={{
-            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-          }}
+      {products && (
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 1, sm: 4, md: 12 }}
         >
-          {products?.map(({ _id, title, documentation, description, guru }) => (
-            <Product
-              key={_id}
-              _id={_id}
-              title={title}
-              documentation={documentation}
-              description={description}
-              guru={guru}
-            />
-          ))}
-        </Box>
-      ) : (
-        <>Loading...</>
+          {products?.map(
+            ({
+              _id,
+              title,
+              documentation,
+              description,
+              guru,
+              batch,
+              index,
+            }) => (
+              <Grid item xs={2} sm={4} md={4} key={_id}>
+                <Product
+                  key={_id}
+                  _id={_id}
+                  title={title}
+                  documentation={documentation}
+                  description={description}
+                  guru={guru}
+                  batch={batch}
+                />
+              </Grid>
+            )
+          )}
+        </Grid>
       )}
     </Box>
   );

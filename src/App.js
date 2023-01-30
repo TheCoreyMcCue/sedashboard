@@ -21,6 +21,7 @@ import Performance from "scenes/performance";
 import { client } from "client";
 import { userQuery } from "utils/data";
 import { setLoggedUser } from "state";
+import ProductInfo from "scenes/products/ProductInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +57,9 @@ function App() {
                   path="/products"
                   element={<Products user={loggedUser} />}
                 />
+                <Route path="/products">
+                  <Route path=":productId" element={<ProductInfo />} />
+                </Route>
                 <Route
                   path="/customers"
                   element={<Customers user={loggedUser} />}
