@@ -28,10 +28,14 @@ const Product = ({ title, documentation, batch, guru, _id }) => {
         borderRadius: "0.55rem",
         minHeight: "10rem",
       }}
-      onClick={() => navigate(`/products/${_id}`)}
     >
       <CardContent>
-        <Typography variant="h4" component="div" style={{ cursor: "pointer" }}>
+        <Typography
+          variant="h4"
+          component="div"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate(`/products/${_id}`)}
+        >
           {title}
         </Typography>
       </CardContent>
