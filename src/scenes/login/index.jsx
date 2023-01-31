@@ -35,8 +35,7 @@ const Login = () => {
       firstName: givenName,
       lastName: familyName,
     };
-    client.createIfNotExists(doc);
-    window.location.reload();
+    client.createIfNotExists(doc).then(window.location.reload());
   };
 
   return (

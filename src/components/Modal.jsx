@@ -1,8 +1,10 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import CustomerForm from "./CustomerForm";
+import { v4 as uuidv4 } from "uuid";
+import { client } from "client";
 
 const style = {
   position: "absolute",
@@ -18,30 +20,36 @@ const style = {
   pb: 3,
 };
 
-// function ChildModal({ handleOpen, open, handleClose }) {
-//   return (
-//     <React.Fragment>
-//       <Button onClick={handleOpen}>Open Child Modal</Button>
-//       <Modal
-//         hideBackdrop
-//         open={open}
-//         onClose={handleClose}
-//         aria-labelledby="child-modal-title"
-//         aria-describedby="child-modal-description"
-//       >
-//         <Box sx={{ ...style, width: 200 }}>
-//           <h2 id="child-modal-title">Text in a child modal</h2>
-//           <p id="child-modal-description">
-//             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-//           </p>
-//           <Button onClick={handleClose}>Close Child Modal</Button>
-//         </Box>
-//       </Modal>
-//     </React.Fragment>
-//   );
-// }
+export default function NestedModal({ open, handleClose, user }) {
+  const [company, setCompany] = useState("");
+  const [contactName, setContactName] = useState(null);
+  const [contactEmail, setContactEmail] = useState(null);
+  const [api, setApi] = useState(null);
+  const [vertical, setVertical] = useState(null);
+  const [qulified, setQualified] = useState(false);
+  const [queries, setQueries] = useState(null);
 
-export default function NestedModal({ handleOpen, open, handleClose }) {
+  const uuid = uuidv4();
+
+  const handleSubmit = () => {
+    const doc = {
+      _id: uuid,
+      _type: "customer",
+      company: company,
+      contactName: contactName,
+      contactEmail: contactEmail,
+      api: api,
+      vertical: vertical,
+      technicalQual: qulified,
+      queries: parseInt(queries),
+      postedBy: {
+        _type: "postedBy",
+        _ref: user?.id,
+      },
+    };
+    client.createIfNotExists(doc);
+  };
+
   return (
     <div>
       <Modal
@@ -56,8 +64,21 @@ export default function NestedModal({ handleOpen, open, handleClose }) {
           flexDirection="column"
           sx={{ ...style, width: 500 }}
         >
-          <CustomerForm />
-          <Button variant="contained" width="70%">
+          <CustomerForm
+            setCompany={setCompany}
+            setContactName={setContactName}
+            setContactEmail={setContactEmail}
+            setApi={setApi}
+            setQueries={setQueries}
+            setVertical={setVertical}
+            setQualified={setQualified}
+            qulified={qulified}
+          />
+          <Button
+            onClick={() => handleSubmit()}
+            variant="contained"
+            width="70%"
+          >
             Submit
           </Button>
         </Box>

@@ -7,7 +7,7 @@ import NestedModal from "components/Modal";
 import { client } from "../../client";
 import { customerQuery } from "utils/data";
 
-export default function CheckboxSelectionGrid() {
+export default function CheckboxSelectionGrid({ user }) {
   // const [checkboxSelection] = React.useState(true);
   const [customers, setCustomers] = useState([]);
   const [open, setOpen] = React.useState(false);
@@ -23,9 +23,11 @@ export default function CheckboxSelectionGrid() {
     company: customer.company,
     contactName: customer.contactName,
     contactEmail: customer.contactEmail,
+    queries: customer.queries,
+    api: customer.api,
+    vertical: customer.vertical,
+    technicalQual: customer.technicalQual,
   }));
-
-  console.log("hshshshshshs", productFields);
 
   // {
   //   id: 1,
@@ -43,8 +45,7 @@ export default function CheckboxSelectionGrid() {
     });
   }, []);
 
-  customers.map((customer) => console.log(customer));
-  const dayta = {
+  const data = {
     columns: [
       {
         field: "company",
@@ -86,94 +87,7 @@ export default function CheckboxSelectionGrid() {
     ],
 
     rows: productFields,
-    // {
-    //   id: 1,
-    //   company: "Riskify",
-    //   contactName: "John Snow",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   api: "TRapi",
-    //   technicalQual: true,
-    //   queries: 3600,
-    // },
-    // {
-    //   id: 2,
-    //   company: "Quatar Airways",
-    //   contactName: "Cersei",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   api: "AO",
-    //   technicalQual: true,
-    //   queries: 3600,
-    // },
-    // {
-    //   id: 3,
-    //   company: "Rebike",
-    //   contactName: "Jaime",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   api: "AOE",
-    //   technicalQual: false,
-    //   queries: 3600,
-    // },
-    // {
-    //   id: 4,
-    //   company: "Gucci",
-    //   contactName: "Arya",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   technicalQual: false,
-    //   api: "TRapi",
-    //   queries: 54600,
-    // },
-    // {
-    //   id: 5,
-    //   company: "Sun Finance",
-    //   contactName: "Daenerys",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   technicalQual: true,
-    //   api: "IDC",
-    //   queries: 2400,
-    // },
-    // {
-    //   id: 6,
-    //   company: "Riskify",
-    //   contactName: "Jerry",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   api: "TRapi",
-    //   queries: 36000,
-    //   technicalQual: false,
-    // },
-    // {
-    //   id: 7,
-    //   company: "Riskify",
-    //   contactName: "Ferrara",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   technicalQual: false,
-    //   api: "TBD",
-    //   queries: 3800,
-    // },
-    // {
-    //   id: 8,
-    //   company: "Riskify",
-    //   contactName: "Rossini",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   technicalQual: true,
-    //   api: "IDC",
-    //   queries: 96000,
-    // },
-    // {
-    //   id: 9,
-    //   company: "Riskify",
-    //   contactName: "Harvey",
-    //   contactEmail: "testemail@testcompany.gov",
-    //   technicalQual: false,
-    //   api: "IDC",
-    //   queries: 40000,
-    // },
   };
-
-  // const { data } = useDemoData({
-  //   dataSet: "Commodity",
-  //   rowLength: 10,
-  //   maxColumns: 5,
-  // });
 
   return (
     <div>
@@ -196,6 +110,7 @@ export default function CheckboxSelectionGrid() {
         handleOpen={handleOpen}
         open={open}
         handleClose={handleClose}
+        user={user}
       />
       <div
         style={{
@@ -206,7 +121,7 @@ export default function CheckboxSelectionGrid() {
         }}
       >
         <DataGrid
-          {...dayta}
+          {...data}
           pageSize={10}
           rowsPerPageOptions={[10]}
           // checkboxSelection={checkboxSelection}

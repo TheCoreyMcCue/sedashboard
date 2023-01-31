@@ -1,9 +1,17 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
+import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 
-export default function CustomerForm() {
+export default function CustomerForm({
+  setCompany,
+  setContactName,
+  setContactEmail,
+  setApi,
+  setQueries,
+  setVertical,
+  setQualified,
+}) {
   return (
     <Box
       component="form"
@@ -19,12 +27,36 @@ export default function CustomerForm() {
           label="Company"
           variant="outlined"
           sx={{ margin: "5px" }}
+          onChange={(event) => {
+            setCompany(event.target.value);
+          }}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Contact Name"
+          variant="outlined"
+          sx={{ margin: "5px" }}
+          onChange={(event) => {
+            setContactName(event.target.value);
+          }}
         />
         <TextField
           id="outlined-basic"
           label="Contact Email"
           variant="outlined"
           sx={{ margin: "5px" }}
+          onChange={(event) => {
+            setContactEmail(event.target.value);
+          }}
+        />
+        <TextField
+          id="outlined-basic"
+          label="API"
+          variant="outlined"
+          sx={{ margin: "5px" }}
+          onChange={(event) => {
+            setApi(event.target.value);
+          }}
         />
 
         <TextField
@@ -32,18 +64,31 @@ export default function CustomerForm() {
           id="outlined-basic"
           label="Queries p/m"
           variant="outlined"
+          onChange={(event) => {
+            setQueries(event.target.value);
+          }}
         />
         <TextField
           sx={{ margin: "5px" }}
           id="outlined-basic"
           label="Vertical"
           variant="outlined"
+          onChange={(event) => {
+            setVertical(event.target.value);
+          }}
         />
+        {/* <TextField
+          sx={{ margin: "5px" }}
+          id="outlined-basic"
+          label="Vertical"
+          variant="outlined"
+          onChange={(event) => {
+            setVertical(event.target.value);
+          }}
+        /> */}
 
         <FormControlLabel
-          control={
-            <Checkbox onChange={(event) => console.log(event.target.checked)} />
-          }
+          control={<Switch onChange={(e) => setQualified(e.target.checked)} />}
           label="Technical call conducted?"
           sx={{ margin: "3px" }}
         />

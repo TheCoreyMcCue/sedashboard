@@ -12,10 +12,6 @@ const ProductInfo = () => {
       setProduct(data[0]);
     });
   }, [productId]);
-  console.log(
-    "🚀 ~ file: ProductInfo.jsx:6 ~ ProductInfo ~ productId",
-    product
-  );
   return (
     <Box>
       <Typography variant="h2">{product?.title}</Typography>
