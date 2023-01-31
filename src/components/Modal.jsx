@@ -47,7 +47,7 @@ export default function NestedModal({ open, handleClose, user }) {
         _ref: user?.id,
       },
     };
-    client.createIfNotExists(doc);
+    client.createIfNotExists(doc).then(window.location.reload());
   };
 
   return (
