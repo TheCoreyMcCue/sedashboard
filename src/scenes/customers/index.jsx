@@ -6,10 +6,15 @@ import NestedModal from "components/Modal";
 
 import { client } from "../../client";
 import { customerQuery } from "utils/data";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckboxSelectionGrid({ user }) {
-  // const [checkboxSelection] = React.useState(true);
+  const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
+  console.log(
+    "🚀 ~ file: index.jsx:13 ~ CheckboxSelectionGrid ~ customers",
+    customers
+  );
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -126,9 +131,8 @@ export default function CheckboxSelectionGrid({ user }) {
           rowsPerPageOptions={[10]}
           // checkboxSelection={checkboxSelection}
           onChange={(event) => console.log(event.target.checked)}
-          onRowClick={(ids) => {
-            console.log(ids);
-          }}
+          onRowClick={(id) => navigate(`/customers/${id.id}`)}
+          // onRowClick={(id) => console.log(id)}
         />
       </div>
     </div>

@@ -22,6 +22,7 @@ import { client } from "client";
 import { userQuery } from "utils/data";
 import { setLoggedUser } from "state";
 import ProductInfo from "scenes/products/ProductInfo";
+import CustomerInfo from "scenes/customers/CustomerInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,9 @@ function App() {
                   path="/customers"
                   element={<Customers user={loggedUser} />}
                 />
+                <Route path="/customers">
+                  <Route path=":customerId" element={<CustomerInfo />} />
+                </Route>
                 <Route path="/transactions" element={<Transactions />} />
                 <Route path="/geography" element={<Geography />} />
                 <Route path="/overview" element={<Overview />} />

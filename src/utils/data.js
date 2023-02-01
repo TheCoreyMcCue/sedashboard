@@ -11,6 +11,10 @@ export const fetchProduct = (productId) => {
   const query = `*[_type == "product" && _id == '${productId}']`;
   return query;
 };
+export const fetchCustomer = (customerId) => {
+  const query = `*[_type == "customer" && _id == '${customerId}']`;
+  return query;
+};
 
 export const customerQuery = () => {
   const query = `*[_type == "customer"]`;
