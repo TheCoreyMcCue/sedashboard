@@ -1,4 +1,14 @@
-import { Box, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  List,
+  ListItem,
+  //   ListItemIcon,
+  ListItemText,
+  TextField,
+  Typography,
+} from "@mui/material";
+// import FolderIcon from "@mui/icons-material/Folder";
 import { client } from "client";
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -7,16 +17,47 @@ import { customerDetailQuery, fetchCustomer } from "utils/data";
 
 const CustomerInfo = ({ user }) => {
   const [customer, setCustomer] = useState(null);
+  console.log(
+    "🚀 ~ file: CustomerInfo.jsx:20 ~ CustomerInfo ~ customer",
+    customer
+  );
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
   const navigate = useNavigate();
   const { customerId } = useParams();
   useEffect(() => {
     client.fetch(customerDetailQuery(customerId)).then((data) => {
-      //   console.log("data", data);
+      console.log("data", data);
       setCustomer(data[0]);
     });
   }, [customerId]);
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const today = new Date();
+
+  const date = `${today.getDate()} ${
+    months[today.getMonth()]
+  }, ${today.getFullYear()}`;
+
+  const time = `${today.getHours()}:${today.getMinutes()}`;
+
+  const postedAt = `${time} on ${date}`;
+
+  console.log(postedAt);
 
   const deleteCustomer = async () => {
     await client
@@ -38,6 +79,7 @@ const CustomerInfo = ({ user }) => {
             comment,
             _key: uuidv4(),
             postedBy: { _type: "postedBy", _ref: user._id },
+            time: postedAt,
           },
         ])
         .commit()
@@ -49,7 +91,7 @@ const CustomerInfo = ({ user }) => {
         });
     }
   };
-  //   console.log("customer fields", customer);
+
   return (
     <Box>
       <button
@@ -77,6 +119,29 @@ const CustomerInfo = ({ user }) => {
           {addingComment ? "Doing..." : "Done"}
         </button>
       )}
+
+      <Grid item xs={12} md={6}>
+        <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+          Notes About This Opp
+        </Typography>
+
+        <List>
+          {customer?.comments.map((comment) => {
+            return (
+              <ListItem key={comment._key}>
+                {/* <ListItemIcon>
+                  <FolderIcon />
+                </ListItemIcon> */}
+                <ListItemText>{comment.time}</ListItemText>
+                <ListItemText
+                  primary={comment.comment}
+                  //   secondary={secondary ? "Secondary text" : null}
+                />
+              </ListItem>
+            );
+          })}
+        </List>
+      </Grid>
     </Box>
   );
 };

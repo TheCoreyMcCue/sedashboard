@@ -44,12 +44,13 @@ export const customerDetailQuery = (customerId) => {
       image
     },
     comments[]{
+      time,
       comment,
       _key,
       postedBy->{
         _id,
         userName,
-        image
+        image,
       },
     }
   }`;
