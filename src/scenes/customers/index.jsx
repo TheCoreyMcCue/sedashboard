@@ -5,17 +5,16 @@ import NestedModal from "components/Modal";
 // import { useDemoData } from "@mui/x-data-grid-generator";
 
 import { client } from "../../client";
-import { customerQuery } from "utils/data";
+import { fetchUserCustomer } from "utils/data";
 import { useNavigate } from "react-router-dom";
+// import { CircularProgress } from "@mui/material";
 
 export default function CheckboxSelectionGrid({ user }) {
   const navigate = useNavigate();
   const [customers, setCustomers] = useState([]);
-  console.log(
-    "🚀 ~ file: index.jsx:13 ~ CheckboxSelectionGrid ~ customers",
-    customers
-  );
-  const [open, setOpen] = React.useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [open, setOpen] = useState(false);
+  console.log("🚀 ~ file: index.jsx:13 ~ CheckboxSelectionGrid ~ user", user);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -23,7 +22,7 @@ export default function CheckboxSelectionGrid({ user }) {
     setOpen(false);
   };
 
-  const productFields = customers.map((customer) => ({
+  const productFields = customers?.map((customer) => ({
     id: customer._id,
     company: customer.company,
     contactName: customer.contactName,
@@ -34,21 +33,12 @@ export default function CheckboxSelectionGrid({ user }) {
     technicalQual: customer.technicalQual,
   }));
 
-  // {
-  //   id: 1,
-  //   company: "Riskify",
-  //   contactName: "John Snow",
-  //   contactEmail: "testemail@testcompany.gov",
-  //   api: "TRapi",
-  //   technicalQual: true,
-  //   queries: 3600,
-  // }
-
   useEffect(() => {
-    client.fetch(customerQuery()).then((data) => {
+    client.fetch(fetchUserCustomer(user?.id)).then((data) => {
       setCustomers(data);
     });
-  }, []);
+  }, [user, submitting]);
+  // console.log("🚀 ~ file: index.jsx:48 ~ client.fetch ~ customers", customers);
 
   const data = {
     columns: [
@@ -116,6 +106,8 @@ export default function CheckboxSelectionGrid({ user }) {
         open={open}
         handleClose={handleClose}
         user={user}
+        submitting={submitting}
+        setSubmitting={setSubmitting}
       />
       <div
         style={{

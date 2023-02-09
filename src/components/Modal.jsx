@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import CustomerForm from "./CustomerForm";
 import { v4 as uuidv4 } from "uuid";
 import { client } from "client";
+// import { useNavigate } from "react-router-dom";
+// import { CircularProgress } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -20,7 +22,13 @@ const style = {
   pb: 3,
 };
 
-export default function NestedModal({ open, handleClose, user }) {
+export default function NestedModal({
+  open,
+  handleClose,
+  user,
+  submitting,
+  setSubmitting,
+}) {
   const [company, setCompany] = useState("");
   const [contactName, setContactName] = useState(null);
   const [contactEmail, setContactEmail] = useState(null);
@@ -29,9 +37,12 @@ export default function NestedModal({ open, handleClose, user }) {
   const [qulified, setQualified] = useState(false);
   const [queries, setQueries] = useState(null);
 
+  // const navigate = useNavigate();
+
   const uuid = uuidv4();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setSubmitting(true);
     const doc = {
       _id: uuid,
       _type: "customer",
@@ -42,13 +53,18 @@ export default function NestedModal({ open, handleClose, user }) {
       vertical: vertical,
       technicalQual: qulified,
       queries: parseInt(queries),
+      userId: user.id,
       postedBy: {
         _type: "postedBy",
         _ref: user?.id,
       },
     };
-    client.createIfNotExists(doc).then(window.location.reload());
+
+    await client.createIfNotExists(doc).then(handleClose());
+    setSubmitting(false);
+    window.location.reload();
   };
+  console.log("submitting", submitting);
 
   return (
     <div>

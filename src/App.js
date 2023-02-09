@@ -66,7 +66,10 @@ function App() {
                   element={<Customers user={loggedUser} />}
                 />
                 <Route path="/customers">
-                  <Route path=":customerId" element={<CustomerInfo />} />
+                  <Route
+                    path=":customerId"
+                    element={<CustomerInfo user={loggedUser} />}
+                  />
                 </Route>
                 <Route path="/transactions" element={<Transactions />} />
                 <Route path="/geography" element={<Geography />} />

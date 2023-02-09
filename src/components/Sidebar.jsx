@@ -79,10 +79,10 @@ const navItems = [
   //   text: "Management",
   //   icon: null,
   // },
-  {
-    text: "Admin",
-    icon: <AdminPanelSettingsOutlined />,
-  },
+  // {
+  //   text: "Admin",
+  //   icon: <AdminPanelSettingsOutlined />,
+  // },
   // {
   //   text: "Performance",
   //   icon: <TrendingUpOutlined />,
@@ -96,6 +96,7 @@ const Sidebar = ({
   setIsSidebarOpen,
   isNonMobile,
 }) => {
+  console.log("🚀 ~ file: Sidebar.jsx:99 ~ user", user);
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();
@@ -187,6 +188,20 @@ const Sidebar = ({
                   </ListItem>
                 );
               })}
+              {user.isAdmin && (
+                <ListItem>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <AdminPanelSettingsOutlined
+                        text="Admin"
+                        onClick={() => {
+                          navigate(`/admin`);
+                        }}
+                      />
+                    </ListItemIcon>
+                  </ListItemButton>
+                </ListItem>
+              )}
             </List>
           </Box>
         </Drawer>

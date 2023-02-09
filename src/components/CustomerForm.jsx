@@ -26,6 +26,7 @@ export default function CustomerForm({
           id="outlined-basic"
           label="Company"
           variant="outlined"
+          required
           sx={{ margin: "5px" }}
           onChange={(event) => {
             setCompany(event.target.value);
@@ -44,6 +45,8 @@ export default function CustomerForm({
           id="outlined-basic"
           label="Contact Email"
           variant="outlined"
+          type="email"
+          pattern=".+@globex\.com"
           sx={{ margin: "5px" }}
           onChange={(event) => {
             setContactEmail(event.target.value);

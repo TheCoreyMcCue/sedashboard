@@ -15,19 +15,29 @@ export const fetchCustomer = (customerId) => {
   const query = `*[_type == "customer" && _id == '${customerId}']`;
   return query;
 };
+export const fetchUserCustomer = (userId) => {
+  const query = `*[_type == "customer" && userId == '${userId}']`;
+  return query;
+};
 
 export const customerQuery = () => {
   const query = `*[_type == "customer"]`;
   return query;
 };
 
-export const customerDetailQuery = (pinId) => {
-  const query = `*[_type == "pin" && _id == '${pinId}']{
+export const customerDetailQuery = (customerId) => {
+  const query = `*[_type == "customer" && _id == '${customerId}']{
     _id,
-    title, 
+    company, 
     about,
-    category,
-    destination,
+    contactName,
+    contactEmail,
+    vertical,
+    api,
+    technicalQual,
+    queries,
+    notes,
+    postedBy,
     postedBy->{
       _id,
       userName,
