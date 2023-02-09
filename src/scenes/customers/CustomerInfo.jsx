@@ -103,7 +103,7 @@ const CustomerInfo = ({ user }) => {
   };
 
   return (
-    <Box>
+    <Box style={{ marginTop: "1rem" }}>
       <Typography variant="h2">{customer?.company}</Typography>
       <Box style={{ maxWidth: "40rem" }}>
         <Typography variant="p">{customer?.about}</Typography>
