@@ -32,6 +32,7 @@ export default function NestedModal({
   const [company, setCompany] = useState("");
   const [contactName, setContactName] = useState(null);
   const [contactEmail, setContactEmail] = useState(null);
+  const [about, setAbout] = useState(null);
   const [api, setApi] = useState(null);
   const [vertical, setVertical] = useState(null);
   const [qulified, setQualified] = useState(false);
@@ -47,6 +48,7 @@ export default function NestedModal({
       company: company,
       contactName: contactName,
       contactEmail: contactEmail,
+      about: about,
       api: api,
       vertical: vertical,
       technicalQual: qulified,
@@ -81,6 +83,7 @@ export default function NestedModal({
             setCompany={setCompany}
             setContactName={setContactName}
             setContactEmail={setContactEmail}
+            setAbout={setAbout}
             setApi={setApi}
             setQueries={setQueries}
             setVertical={setVertical}

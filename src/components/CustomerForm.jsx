@@ -7,6 +7,7 @@ export default function CustomerForm({
   setCompany,
   setContactName,
   setContactEmail,
+  setAbout,
   setApi,
   setQueries,
   setVertical,
@@ -50,6 +51,16 @@ export default function CustomerForm({
           sx={{ margin: "5px" }}
           onChange={(event) => {
             setContactEmail(event.target.value);
+          }}
+        />
+        <TextField
+          id="outlined-basic"
+          label="About"
+          variant="outlined"
+          pattern=".+@globex\.com"
+          sx={{ margin: "5px" }}
+          onChange={(event) => {
+            setAbout(event.target.value);
           }}
         />
         <TextField
