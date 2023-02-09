@@ -17,34 +17,30 @@ import { customerDetailQuery, fetchCustomer } from "utils/data";
 
 const CustomerInfo = ({ user }) => {
   const [customer, setCustomer] = useState(null);
-  console.log(
-    "🚀 ~ file: CustomerInfo.jsx:20 ~ CustomerInfo ~ customer",
-    customer
-  );
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
   const navigate = useNavigate();
   const { customerId } = useParams();
   useEffect(() => {
     client.fetch(customerDetailQuery(customerId)).then((data) => {
-      console.log("data", data);
+      //   console.log("data", data);
       setCustomer(data[0]);
     });
   }, [customerId]);
 
   const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
+    "January",
+    "February",
+    "March",
+    "April",
     "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   const today = new Date();
@@ -55,9 +51,7 @@ const CustomerInfo = ({ user }) => {
 
   const time = `${today.getHours()}:${today.getMinutes()}`;
 
-  const postedAt = `${time} on ${date}`;
-
-  console.log(postedAt);
+  const postedAt = `${date} at ${time}`;
 
   const deleteCustomer = async () => {
     await client
@@ -103,44 +97,57 @@ const CustomerInfo = ({ user }) => {
       </button>
       <Typography variant="h2">{customer?.company}</Typography>
       <Typography variant="h6">{customer?.contactName}</Typography>
-      <TextField
-        id="outlined-multiline-flexible"
-        label="Notes"
-        multiline
-        maxRows={10}
-        onChange={(e) => setComment(e.target.value)}
-      />
-      {comment && (
-        <button
-          type="button"
-          className="bg-red-500 text-white rounded-full px-6 py-2 font-semibold text-base outline-none"
-          onClick={addComment}
-        >
-          {addingComment ? "Doing..." : "Done"}
-        </button>
-      )}
 
       <Grid item xs={12} md={6}>
-        <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+        <Typography
+          sx={{ mt: 4, mb: 2 }}
+          variant="h3"
+          component="div"
+          style={{ textAlign: "center" }}
+        >
           Notes About This Opp
         </Typography>
 
         <List>
-          {customer?.comments.map((comment) => {
-            return (
-              <ListItem key={comment._key}>
-                {/* <ListItemIcon>
+          <ListItemText>Posted on:</ListItemText>
+          {customer?.comments
+            .slice(0)
+            .reverse()
+            .map((comment) => {
+              return (
+                <ListItem key={comment._key}>
+                  {/* <ListItemIcon>
                   <FolderIcon />
                 </ListItemIcon> */}
-                <ListItemText>{comment.time}</ListItemText>
-                <ListItemText
-                  primary={comment.comment}
-                  //   secondary={secondary ? "Secondary text" : null}
-                />
-              </ListItem>
-            );
-          })}
+                  <ListItemText>{comment.time}</ListItemText>
+                  <ListItemText
+                    style={{ maxWidth: "40%" }}
+                    primary={comment.comment}
+                    //   secondary={secondary ? "Secondary text" : null}
+                  />
+                </ListItem>
+              );
+            })}
         </List>
+        <Box className="mt-6">
+          <TextField
+            id="outlined-multiline-flexible"
+            label="Post a new note"
+            multiline
+            maxRows={10}
+            style={{ width: "25rem", marginLeft: "8rem", marginRight: "2rem" }}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          {comment && (
+            <button
+              type="button"
+              className="bg-green-500 text-white rounded-full px-6 py-3 font-semibold text-base outline-none"
+              onClick={addComment}
+            >
+              {addingComment ? "Posting" : "Post"}
+            </button>
+          )}
+        </Box>
       </Grid>
     </Box>
   );

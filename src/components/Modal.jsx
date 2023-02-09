@@ -37,8 +37,6 @@ export default function NestedModal({
   const [qulified, setQualified] = useState(false);
   const [queries, setQueries] = useState(null);
 
-  // const navigate = useNavigate();
-
   const uuid = uuidv4();
 
   const handleSubmit = async () => {
@@ -64,7 +62,6 @@ export default function NestedModal({
     setSubmitting(false);
     window.location.reload();
   };
-  // console.log("submitting", submitting);
 
   return (
     <div>
