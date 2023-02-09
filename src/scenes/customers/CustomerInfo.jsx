@@ -1,5 +1,8 @@
 import {
   Box,
+  Button,
+  Dialog,
+  DialogTitle,
   Grid,
   List,
   ListItem,
@@ -19,6 +22,15 @@ const CustomerInfo = ({ user }) => {
   const [customer, setCustomer] = useState(null);
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+  };
   const navigate = useNavigate();
   const { customerId } = useParams();
   useEffect(() => {
@@ -27,6 +39,10 @@ const CustomerInfo = ({ user }) => {
       setCustomer(data[0]);
     });
   }, [customerId]);
+
+  //   const handleClose = () => {
+  //     onClose(selectedValue);
+  //   };
 
   const months = [
     "January",
@@ -88,54 +104,50 @@ const CustomerInfo = ({ user }) => {
 
   return (
     <Box>
-      <button
-        type="button"
-        className="bg-red-500 text-white rounded-full px-6 py-2 mb-10 font-semibold text-base outline-none"
-        onClick={deleteCustomer}
-      >
-        Delete Opp
-      </button>
       <Typography variant="h2">{customer?.company}</Typography>
-      <Typography variant="h6">{customer?.contactName}</Typography>
+      <Box style={{ maxWidth: "40rem" }}>
+        <Typography variant="p">{customer?.about}</Typography>
+      </Box>
 
       <Grid item xs={12} md={6}>
         <Typography
-          sx={{ mt: 4, mb: 2 }}
-          variant="h3"
+          sx={{ mt: 6, mb: 2 }}
+          variant="h4"
           component="div"
           style={{ textAlign: "center" }}
         >
           Notes About This Opp
         </Typography>
-
-        <List>
-          <ListItemText>Posted on:</ListItemText>
-          {customer?.comments
-            .slice(0)
-            .reverse()
-            .map((comment) => {
-              return (
-                <ListItem key={comment._key}>
-                  {/* <ListItemIcon>
+        {customer?.comments && (
+          <List>
+            <ListItemText>Posted on:</ListItemText>
+            {customer?.comments
+              .slice(0)
+              .reverse()
+              .map((comment) => {
+                return (
+                  <ListItem key={comment._key}>
+                    {/* <ListItemIcon>
                   <FolderIcon />
                 </ListItemIcon> */}
-                  <ListItemText>{comment.time}</ListItemText>
-                  <ListItemText
-                    style={{ maxWidth: "40%" }}
-                    primary={comment.comment}
-                    //   secondary={secondary ? "Secondary text" : null}
-                  />
-                </ListItem>
-              );
-            })}
-        </List>
+                    <ListItemText>{comment.time}</ListItemText>
+                    <ListItemText
+                      style={{ maxWidth: "40%" }}
+                      primary={comment?.comment}
+                      //   secondary={secondary ? "Secondary text" : null}
+                    />
+                  </ListItem>
+                );
+              })}
+          </List>
+        )}
         <Box className="mt-6">
           <TextField
             id="outlined-multiline-flexible"
             label="Post a new note"
             multiline
             maxRows={10}
-            style={{ width: "25rem", marginLeft: "8rem", marginRight: "2rem" }}
+            style={{ width: "25rem", marginLeft: "1rem", marginRight: "1rem" }}
             onChange={(e) => setComment(e.target.value)}
           />
           {comment && (
@@ -149,6 +161,30 @@ const CustomerInfo = ({ user }) => {
           )}
         </Box>
       </Grid>
+      <Box style={{ display: "flex", justifyContent: "center" }}>
+        <Button
+          variant="outlined"
+          color="error"
+          onClick={handleClickOpen}
+          style={{ marginTop: "6rem", marginLeft: "1rem" }}
+        >
+          Delete Opportunity
+        </Button>
+        <Dialog onClose={handleClose} open={open}>
+          <DialogTitle>
+            Are you sure you want to delete this opportunity?
+          </DialogTitle>
+          <Button
+            type="button"
+            variant="outlined"
+            color="error"
+            onClick={deleteCustomer}
+            // style={{ marginTop: "6rem", marginLeft: "1rem" }}
+          >
+            Delete Opp
+          </Button>
+        </Dialog>
+      </Box>
     </Box>
   );
 };
