@@ -13,7 +13,7 @@ const CustomerInfo = ({ user }) => {
   const { customerId } = useParams();
   useEffect(() => {
     client.fetch(customerDetailQuery(customerId)).then((data) => {
-      console.log("data", data);
+      //   console.log("data", data);
       setCustomer(data[0]);
     });
   }, [customerId]);
@@ -49,7 +49,7 @@ const CustomerInfo = ({ user }) => {
         });
     }
   };
-  console.log("customer fields", customer);
+  //   console.log("customer fields", customer);
   return (
     <Box>
       <button

@@ -96,7 +96,7 @@ const Sidebar = ({
   setIsSidebarOpen,
   isNonMobile,
 }) => {
-  console.log("🚀 ~ file: Sidebar.jsx:99 ~ user", user);
+  // console.log("🚀 ~ file: Sidebar.jsx:99 ~ user", user);
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();

@@ -14,7 +14,7 @@ export default function CheckboxSelectionGrid({ user }) {
   const [customers, setCustomers] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [open, setOpen] = useState(false);
-  console.log("🚀 ~ file: index.jsx:13 ~ CheckboxSelectionGrid ~ user", user);
+  // console.log("🚀 ~ file: index.jsx:13 ~ CheckboxSelectionGrid ~ user", user);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -122,7 +122,7 @@ export default function CheckboxSelectionGrid({ user }) {
           pageSize={10}
           rowsPerPageOptions={[10]}
           // checkboxSelection={checkboxSelection}
-          onChange={(event) => console.log(event.target.checked)}
+          // onChange={(event) => console.log(event.target.checked)}
           onRowClick={(id) => navigate(`/customers/${id.id}`)}
           // onRowClick={(id) => console.log(id)}
         />

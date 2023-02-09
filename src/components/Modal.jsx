@@ -64,7 +64,7 @@ export default function NestedModal({
     setSubmitting(false);
     window.location.reload();
   };
-  console.log("submitting", submitting);
+  // console.log("submitting", submitting);
 
   return (
     <div>
