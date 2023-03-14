@@ -8,6 +8,7 @@ import { themeSettings } from "theme";
 import Layout from "scenes/layout";
 import Login from "scenes/login";
 import Dashboard from "scenes/dashboard";
+import Onboarding from "scenes/onboarding";
 import Products from "scenes/products";
 import Customers from "scenes/customers";
 import Transactions from "scenes/transactions";
@@ -72,6 +73,7 @@ function App() {
                   />
                 </Route>
                 <Route path="/transactions" element={<Transactions />} />
+                <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/geography" element={<Geography />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/daily" element={<Daily />} />

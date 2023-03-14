@@ -20,7 +20,7 @@ import {
   // ReceiptLongOutlined,
   // PublicOutlined,
   // PointOfSaleOutlined,
-  // TodayOutlined,
+  TodayOutlined,
   // CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
   // TrendingUpOutlined,
@@ -35,10 +35,7 @@ const navItems = [
     text: "Dashboard",
     icon: <HomeOutlined />,
   },
-  {
-    text: "Client Facing",
-    icon: null,
-  },
+
   {
     text: "Products",
     icon: <ShoppingCartOutlined />,
@@ -47,10 +44,10 @@ const navItems = [
     text: "Customers",
     icon: <Groups2Outlined />,
   },
-  // {
-  //   text: "Transactions",
-  //   icon: <ReceiptLongOutlined />,
-  // },
+  {
+    text: "Onboarding",
+    icon: <TodayOutlined />,
+  },
   // {
   //   text: "Geography",
   //   icon: <PublicOutlined />,
@@ -96,7 +93,6 @@ const Sidebar = ({
   setIsSidebarOpen,
   isNonMobile,
 }) => {
-  // console.log("🚀 ~ file: Sidebar.jsx:99 ~ user", user);
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();
