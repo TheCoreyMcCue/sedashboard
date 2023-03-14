@@ -43,23 +43,7 @@ const Dashboard = () => {
         >
           My Open Jira Tickets
         </Box>
-        <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-          component="a"
-          target="_blank"
-          href="https://ekata.cloud.databricks.com/?o=3894293756420120#"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          DataBricks
-        </Box>
+
         <Box
           gridColumn="span 4"
           gridRow="span 2"
@@ -76,6 +60,23 @@ const Dashboard = () => {
           }}
         >
           Technical Qualification Questions
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          component="a"
+          target="_blank"
+          href="https://docs.google.com/presentation/d/1qUqeLX2nhjh0XSdShAxyj3OEyE0OFaK5/edit#slide=id.p1"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          POC Presentation
         </Box>
         <Box
           gridColumn="span 4"
@@ -111,23 +112,7 @@ const Dashboard = () => {
         >
           Guru Cards
         </Box>
-        <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-          component="a"
-          target="_blank"
-          href="https://docs.google.com/presentation/d/1qUqeLX2nhjh0XSdShAxyj3OEyE0OFaK5/edit#slide=id.p1"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          POC Presentation
-        </Box>
+
         <Box
           gridColumn="span 4"
           gridRow="span 2"
@@ -178,6 +163,23 @@ const Dashboard = () => {
           }}
         >
           The Hub (MasterCard)
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+          component="a"
+          target="_blank"
+          href="https://ekata.cloud.databricks.com/?o=3894293756420120#"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          DataBricks
         </Box>
       </Box>
     </Box>
