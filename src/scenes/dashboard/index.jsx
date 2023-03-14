@@ -1,13 +1,6 @@
 import React from "react";
 import FlexBetween from "components/FlexBetween";
 import Header from "components/Header";
-// import {
-//   DownloadOutlined,
-//   Email,
-//   PointOfSale,
-//   PersonAdd,
-//   Traffic,
-// } from "@mui/icons-material";
 import { Box, useTheme, useMediaQuery } from "@mui/material";
 
 const Dashboard = () => {
@@ -18,21 +11,6 @@ const Dashboard = () => {
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-
-        {/* <Box>
-          <Button
-            sx={{
-              backgroundColor: theme.palette.secondary.light,
-              color: theme.palette.background.alt,
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
-          >
-            <DownloadOutlined sx={{ mr: "10px" }} />
-            Download Reports
-          </Button>
-        </Box> */}
       </FlexBetween>
 
       <Box
@@ -107,7 +85,7 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://docs.google.com/document/d/1HJ_aAOo4BN_S-F7XIqlF5uKod0sCjM-YSnnLo4Ga0Og/"
+          href="https://docs.google.com/spreadsheets/d/11dX0piuStRtCW2RHk4LlvVLlB8uhWZ5FxBXMRkeOplc/edit#gid=0"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -141,14 +119,14 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://docs.google.com/document/u/0/?tgif=d"
+          href="https://docs.google.com/presentation/d/1qUqeLX2nhjh0XSdShAxyj3OEyE0OFaK5/edit#slide=id.p1"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          My Google Docs
+          POC Presentation
         </Box>
         <Box
           gridColumn="span 4"
@@ -202,61 +180,6 @@ const Dashboard = () => {
           The Hub (MasterCard)
         </Box>
       </Box>
-      {/* <Box
-        mt="20px"
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="160px"
-        gap="20px"
-        sx={{
-          "& > div": {
-            gridColumn: isNonMediumScreens ? undefined : "span 12",
-            margin: "0.5rem",
-            marginBottom: "20px",
-          },
-        }}
-      >
-        <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-          style={{
-            cursor: "pointer",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Quick Link
-        </Box>
-        <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-          style={{
-            cursor: "pointer",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Quick Link
-        </Box>
-        <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-          style={{ cursor: "pointer" }}
-        >
-          box 2
-        </Box>
-      </Box> */}
     </Box>
   );
 };
