@@ -3,7 +3,7 @@ import {
   LightModeOutlined,
   DarkModeOutlined,
   Menu as MenuIcon,
-  Search,
+  // Search,
   SettingsOutlined,
   ArrowDropDownOutlined,
 } from "@mui/icons-material";
@@ -16,7 +16,7 @@ import {
   Box,
   Typography,
   IconButton,
-  InputBase,
+  // InputBase,
   Toolbar,
   Menu,
   MenuItem,
@@ -59,10 +59,10 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             gap="3rem"
             p="0.1rem 1.5rem"
           >
-            <InputBase placeholder="Search..." />
+            {/* <InputBase placeholder="Search..." />
             <IconButton>
               <Search />
-            </IconButton>
+            </IconButton> */}
           </FlexBetween>
         </FlexBetween>
 

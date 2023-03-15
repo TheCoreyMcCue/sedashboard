@@ -52,7 +52,7 @@ const Dashboard = () => {
           borderRadius="0.55rem"
           component="a"
           target="_blank"
-          href="https://docs.google.com/document/d/1uO6hV-pI13LbGisGtxpn9l4jq_wC9-ekjB4bM0kS_a8/"
+          href="https://docs.google.com/spreadsheets/d/11dX0piuStRtCW2RHk4LlvVLlB8uhWZ5FxBXMRkeOplc/edit#gid=0"
           style={{
             display: "flex",
             justifyContent: "center",
